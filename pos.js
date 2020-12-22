@@ -56,8 +56,6 @@ class Item {
 
 // UI Class: Handle UI Tasks
 class UI {
-
-
     static addItemToList(item) {
         const list = document.querySelector('#book-list');
 
@@ -70,12 +68,14 @@ class UI {
         <td>${item.subtotal}</td>
         <td><button class="btn btn-danger btn-sm delete">DELETE</button></td>    
       `;
-
         list.appendChild(row);
     }
 
     static deleteItem(el) {
         if (el.classList.contains('delete')) {
+            const sub = el.parentElement.parentElement.childNodes[9].innerText;
+            total = total - sub;
+            document.getElementById('total').value = total;
             el.parentElement.parentElement.remove();
         }
     }
@@ -87,57 +87,6 @@ class UI {
         document.querySelector('#quantity').value = '';
         document.querySelector('#amount').value = '';
     }
-
-
-    // static displayItems() {
-    //     const items = Store.getItems();
-
-    //     books.forEach((item) => UI.addItemToList(item));
-    // }
-
-    // static showAlert(message, className) {
-    //     const div = document.createElement('div');
-    //     div.className = `alert alert-${className}`;
-    //     div.appendChild(document.createTextNode(message));
-    //     const container = document.querySelector('.container');
-    //     const form = document.querySelector('#book-form');
-    //     container.insertBefore(div, form);
-
-    //     // Vanish in 3 seconds
-    //     setTimeout(() => document.querySelector('.alert').remove(), 300);
-    // }
-
-
-}
-
-// Store Class: Handles Storage
-class Store {
-    static addItem(item) {
-        const items = Store.getItems();
-        items.push(item);
-        localStorage.setItem('items', JSON.stringify(items));
-    }
-
-    // static getItems() {
-    //     let items;
-    //     if (localStorage.getItem('items') === null) {
-    //         items = [];
-    //     } else {
-    //         items = JSON.parse(localStorage.getItem('items'));
-    //     }
-    //     return items;
-    // }
-
-    // static removeItem(quantity) {
-    //     const items = Store.getItems();
-
-    //     items.forEach((item, index) => {
-    //         if (item.quantity === quantity) {
-    //             items.splice(index, 1);
-    //         }
-    //     });
-    //     localStorage.setItem('items', JSON.stringify(items));
-    // }
 }
 
 // Event: Display Items
@@ -170,13 +119,6 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
         // Clear fields
         UI.clearFields();
 
-        // Add item to store
-        //Store.addItem(item);
-
-        // Show success message
-        // UI.showAlert('Item Added', 'success');
-
-
     }
 });
 
@@ -185,9 +127,4 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
     // Remove item from UI
     UI.deleteItem(e.target);
 
-    // Remove item from store
-    // Store.removeItem(e.target.parentElement.previousElementSibling.textContent);
-
-    //     // Show success message
-    //     UI.showAlert('Item Removed', 'success');
 });
