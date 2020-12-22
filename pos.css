@@ -1,0 +1,12 @@
+ .margin-left {
+     float: left;
+     width: 80%;
+     padding: 40px;
+ }
+ 
+ .billing {
+     float: left;
+     width: 20%;
+     padding: 40px;
+     margin-top: 100px;
+ }

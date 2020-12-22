@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css">
+    <link rel="stylesheet" href="pos.css">
+    <title>POS</title>
+</head>
+
+<body>
+
+    <div class="margin-left">
+        <h1 class="display-4 text-center">
+            <span class="text-primary">POS</span> System
+        </h1>
+
+        <h4 class="display-8 text-left">
+            <span class="text-primary" id="date"> </span>
+            <!-- <span class="display-8 text-rigt" style="margin-left: 720px;" id="date"> Customer Name</span> -->
+        </h4>
+
+        <form class="form-harizontal" id="book-form">
+            <table class="table table-bordered">
+
+                <tr style="text-align: center;">
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Amount</th>
+                    <th>Option</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="itemId" class="form-control" onchange="myfunction()" required>
+                            <option value="default">default</option>
+                    </td>
+
+                    <td>
+                        <input type="text" id="itemName" class="form-control">
+                    </td>
+
+                    <td>
+                        <input type="number" id="itemPrice" class="form-control">
+                    </td>
+
+                    <td>
+                        <input type="number" id="quantity" class="form-control">
+                    </td>
+
+                    <td>
+                        <input type="number" id="amount" class="form-control" placeholder="Rs 0.00">
+                    </td>   
+                       
+                    <td>
+                        <input type="submit" value="ADD" class="btn btn-primary btn-block" id="add">
+                    </td>
+                    
+                </tr>
+            </table>
+        </form>
+       
+
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ITEM NAME</th>
+                <th>UNIT PRICE</th>
+                <th>QUANTITY</th>
+                <th>SUBTOTAL</th>
+                <th>CONSTRAL</th>
+            </tr>
+        </thead>
+        <tbody id="book-list"></tbody>
+    </table>
+    </div>
+
+        <div class="billing">
+
+            <form>
+                <label>Total Rs:</label><br>
+                <input type="number" id="total" name="Total" placeholder="Rs 0.00"><br><br>
+                
+                <label>Pay Amount Rs:</label><br>
+                <input type="number" id="pay" placeholder="Rs 0.00"><br><br>
+
+                <label>Return Rs:</label><br>
+                <input type="number" id="returnrs" placeholder="Rs 0.00"><br>
+              </form>
+
+        
+
+    <script src="pos.js">
+    </script>
+</body>
+
+</html>
